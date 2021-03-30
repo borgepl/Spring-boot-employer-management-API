@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    username: emp_test_user
+    password: testpwd
+    url: jdbc:mysql://localhost:3306/empl?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+    initialization-mode: always
+    platform: mysql
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          delimiter: ";"
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: test_database_create.sql
+  main:
+    allow-bean-definition-overriding: true
